@@ -1,0 +1,21 @@
+{
+  "name": "ledcube5",
+  "version": "1.0.0",
+  "description": "Control an LED cube of size 5x5x5.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node /test/main.js"
+  },
+  "keywords": [
+    "led",
+    "cube",
+    "raspberry",
+    "pi",
+    "i2c"
+  ],
+  "author": "smc",
+  "license": "ISC",
+  "dependencies": {
+    "i2c": "^0.2.3"
+  }
+}
