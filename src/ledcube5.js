@@ -48,7 +48,7 @@ const init = () => {
 		// Set matrix pins to 1 //TODO: remove this
 		for (j = 0; j < 5; j++) {
 			for (k = 0; k < 5; k++) {
-				layerbytes[i] |= (1 << matrixpins[j][k]) * 1; /*cube[i][j][k]*/
+				layerbytes[i] |= (1 << matrixpins[j][k]) * 0; /*cube[i][j][k]*/
 			}
 		}
 	}
@@ -63,7 +63,7 @@ let stopTriggered = false;
 const run = () => {
 	setImmediate(async function () {
 		let l;
-		const FREQUENCY = 100;
+		const dt = 0;
 		while (true) {
 			for (l = 0; l < 5; l++) {
 				// Write layer
@@ -72,7 +72,7 @@ const run = () => {
 				i2c1.writeByteSync(MCP2, GPIOA, (layerbytes[l] & 0x00FF0000) >>> 16);
 				i2c1.writeByteSync(MCP2, GPIOB, (layerbytes[l] & 0xFF000000) >>> 24);
 				// console.log('0b' + ((layerbytes[l] & 0xFF000000) >>> 24).toString(2).padStart(8, 0));
-				// await sleep(1 / FREQUENCY * 1e3);
+				await sleep(dt);
 			}
 			if (stopTriggered) {
 				stopTriggered = false;

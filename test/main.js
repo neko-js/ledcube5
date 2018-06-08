@@ -4,40 +4,28 @@ let cube = require('../src/ledcube5');
 cube.init();
 cube.run();
 
-const rand01 = () => Math.round(Math.random());
+const rand01 = (p = 50) => Math.random()*100 < p ? 0 : 1;
 const rand04 = () => Math.round(Math.random() * 4);
 
 const sleep = (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-/*
-function run() {
-	setImmediate(async function () {
-		let i, j, k;
-		while (true) {
-			i = rand04();
-			j = rand04();
-			k = rand04();
-			o = rand01();
-			cube.set(i, j, k, o);
-			console.log(i, j, k, o);
-			// await sleep(500);
-		}
-	});
-}
-*/
-
-let i, j, k;
-for(let t=0; t < 1000; t++){
-	setTimeout(() => {
+async function run() {
+	let i,
+	j,
+	k;
+	while (true) {
 		i = rand04();
 		j = rand04();
 		k = rand04();
-		o = rand01();
+		o = rand01(75);
 		cube.set(i, j, k, o);
-		console.log(t, i, j, k, o);
-	}, t*500);
+		// console.log(i, j, k, o);
+		await sleep(10);
+	}
 }
+
+run();
 
 console.log(cube.getCube());
