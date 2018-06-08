@@ -16,6 +16,6 @@
   "author": "smc",
   "license": "ISC",
   "dependencies": {
-    "i2c": "^0.2.3"
+    "i2c-bus": "^3.2.0"
   }
 }
